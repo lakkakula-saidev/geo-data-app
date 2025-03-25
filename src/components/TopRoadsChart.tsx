@@ -59,8 +59,8 @@ export const TopRoadsChart = ({ roadData }: { roadData: RoadFeature[] }) => {
       {
         label: "LineString Count",
         data: topRoads.map(([_, count]) => count),
-        backgroundColor: "rgba(75, 192, 192, 0.2)",
-        borderColor: "rgba(75, 192, 192, 1)",
+        backgroundColor: "rgba(204, 153, 255, 1)",
+        borderColor: "rgba(126, 34, 206, 1)",
         borderWidth: 1
       }
     ]

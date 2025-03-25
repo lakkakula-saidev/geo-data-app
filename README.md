@@ -1,6 +1,6 @@
 # Geo-Data App
 
-A web application built with React and Vite to display and interact with maps and display geo data.
+A web application built with React and Vite to display and interact with maps and display geo data. This app requires the JSON Server with Geodata running on localhost:3000
 
 ### Building the App
 
@@ -11,7 +11,6 @@ npm run dev
 ```
 
 This will run the app locally at `http://localhost:5173`.
-
 
 # Pages of My Maps App
 
@@ -30,7 +29,6 @@ The **Todos Page** displays a list of to-do items associated with roads. Users c
 ## TypeScript
 
 Except for the store, almost all the pages and components are strongly typed with TypeScript.
-
 
 ## Modules
 

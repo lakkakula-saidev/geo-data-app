@@ -39,25 +39,19 @@ export const StreetDistanceTable = ({ features }: { features: Feature[] }) => {
     setTop5Shortest(sortedStreets.slice(-5));
   }, [features]);
 
-  const columns = [
+  const columns: { key: "name" | "totalDistance"; label: string }[] = [
     { key: "name", label: "Street Name" },
     { key: "totalDistance", label: "Total Distance (m)" }
   ];
 
   return (
     <div>
-      <h4 className="text-xl font-semibold text-gray-800 dark:text-white my-5">
-        Top 5 Longest Streets
-      </h4>
       <DataTable
         title="Top 5 Longest Streets"
         data={top5Longest}
         columns={columns}
       />
 
-      <h4 className="text-xl font-semibold text-gray-800 dark:text-white my-5">
-        Top 5 Shortest Streets
-      </h4>
       <DataTable
         title="Top 5 Shortest Streets"
         data={top5Shortest}

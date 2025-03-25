@@ -21,7 +21,6 @@ export const StatisticsPage: React.FC = () => {
   if (isLoading) return <LoadingComponent />;
   if (isError) return <ErrorComponent message={(error as Error).message} />;
 
-  console.log("this is features", geoData);
   return (
     geoData && (
       <div className="flex flex-col w-screen items-center p-5">

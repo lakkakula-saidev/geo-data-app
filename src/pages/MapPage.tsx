@@ -22,7 +22,6 @@ const onEachStreet = (
 
   if (streetName) {
     layer.on("click", () => {
-      console.log(feature);
       if (feature.properties.fid) {
         setSelectedRoadFid(feature.properties.fid);
         setIsModalOpen(true);
