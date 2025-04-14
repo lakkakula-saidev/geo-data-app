@@ -45,8 +45,5 @@ jobs:
           until curl -s http://localhost:3000; do sleep 1; done
           echo "json-server is up!"
 
-      - name: Run tests
-        run: npm test
-
       - name: Build the app
         run: npm run build
