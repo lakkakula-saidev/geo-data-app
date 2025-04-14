@@ -12,13 +12,12 @@ on:
 jobs:
 
   build:
-    needs: login
     runs-on: ubuntu-latest
-
+    
     services:
       json-server:
         image: lsaidev/my-json-server:v1
-        credentinals:
+        credentials:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
         ports:
