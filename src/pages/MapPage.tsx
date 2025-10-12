@@ -1,5 +1,6 @@
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { FeatureCollection, LineString, Position } from "geojson";
 
 import { useRoadsQuery } from "../hooks";
 import { geoJSONStyle } from "../utils";
@@ -63,11 +64,41 @@ const onEachStreet = (
   }
 };
 
+// Calculate the center point from all features
+const calculateMapCenter = (
+  geoData: FeatureCollection | undefined
+): [number, number] => {
+  if (!geoData?.features?.length) return [47.3769, 8.5417]; // Default to first coordinate from data
+
+  let totalLat = 0;
+  let totalLng = 0;
+  let count = 0;
+
+  geoData.features.forEach((feature) => {
+    if (feature.geometry?.type === "LineString") {
+      const lineString = feature.geometry as LineString;
+      lineString.coordinates.forEach((coord: Position) => {
+        if (coord.length >= 2) {
+          totalLng += coord[0]; // longitude
+          totalLat += coord[1]; // latitude
+          count++;
+        }
+      });
+    }
+  });
+
+  if (count === 0) return [47.3769, 8.5417];
+
+  return [totalLat / count, totalLng / count]; // [lat, lng] for Leaflet
+};
+
 export const MapPage: React.FC = () => {
   const { data: geoData, isLoading, isError, error } = useRoadsQuery();
 
   const [selectedRoadFid, setSelectedRoadFid] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const mapCenter = useMemo(() => calculateMapCenter(geoData), [geoData]);
 
   const handleModalClose = () => {
     setIsModalOpen(false);
@@ -92,15 +123,8 @@ export const MapPage: React.FC = () => {
         </p>
 
         <MapContainer
-          center={
-            geoData
-              ? [
-                  geoData.features[350].geometry.coordinates[0][1],
-                  geoData.features[350].geometry.coordinates[0][0]
-                ]
-              : [51.505, -0.09]
-          }
-          zoom={14}
+          center={mapCenter}
+          zoom={15}
           style={{
             height: "100%",
             width: "100%",
@@ -111,13 +135,20 @@ export const MapPage: React.FC = () => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
-          <GeoJSON
-            data={geoData}
-            style={geoJSONStyle}
-            onEachFeature={(feature, layer) =>
-              onEachStreet(feature, layer, setSelectedRoadFid, setIsModalOpen)
-            }
-          />
+          {geoData?.features?.length ? (
+            <GeoJSON
+              data={geoData}
+              style={geoJSONStyle}
+              onEachFeature={(feature, layer) =>
+                onEachStreet(
+                  feature,
+                  layer,
+                  setSelectedRoadFid,
+                  setIsModalOpen
+                )
+              }
+            />
+          ) : null}
         </MapContainer>
         <div className="absolute bottom-8 right-8 bg-white p-4 z-[1000] shadow-lg rounded-lg">
           <Legend />

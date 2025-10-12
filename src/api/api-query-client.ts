@@ -1,13 +1,7 @@
 import { QueryClient } from "@tanstack/react-query";
-import axios from "axios";
 
-const JsonServer = "http://localhost:3000";
-
-export const apiClient = axios.create({
-  baseURL: JsonServer,
-  headers: {
-    "Content-Type": "application/json"
-  }
-});
-
+/**
+ * Single QueryClient instance for the app.
+ * Data now loaded via window.fetch from /db.json (served from /public).
+ */
 export const queryClient = new QueryClient();

@@ -1,0 +1,202 @@
+{
+  "roads": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [11.5731, 48.1371],
+            [11.5738, 48.1374],
+            [11.5745, 48.1377],
+            [11.5752, 48.1381],
+            [11.576, 48.1385]
+          ]
+        },
+        "properties": {
+          "fid": 1,
+          "name": "Neuhauser Strasse",
+          "eemi_grade": {
+            "gw": 2.5,
+            "twgeb": 2.3,
+            "twofs": 2.6,
+            "twrio": 2.4,
+            "twsub": 2.7,
+            "tweben": 2.5,
+            "sub_type_grades": {
+              "ABP": 2.4,
+              "ONA": 2.6
+            }
+          }
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [11.5775, 48.1378],
+            [11.5781, 48.138],
+            [11.5788, 48.1383],
+            [11.5795, 48.1386],
+            [11.5802, 48.1389]
+          ]
+        },
+        "properties": {
+          "fid": 2,
+          "name": "Kaufingerstrasse",
+          "eemi_grade": {
+            "gw": 1.9,
+            "twgeb": 1.8,
+            "twofs": 2,
+            "twrio": 1.7,
+            "twsub": 2.1,
+            "tweben": 1.9,
+            "sub_type_grades": {
+              "ABP": 1.8,
+              "ONA": 2
+            }
+          }
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [11.5799, 48.1369],
+            [11.5806, 48.1372],
+            [11.5812, 48.1375],
+            [11.5818, 48.1378],
+            [11.5823, 48.1381]
+          ]
+        },
+        "properties": {
+          "fid": 3,
+          "name": "Marienplatz",
+          "eemi_grade": {
+            "gw": 3.1,
+            "twgeb": 3,
+            "twofs": 3.3,
+            "twrio": 3,
+            "twsub": 3.4,
+            "tweben": 3.1,
+            "sub_type_grades": {
+              "ABP": 3,
+              "ONA": 3.3
+            }
+          }
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [11.5827, 48.1383],
+            [11.5834, 48.1386],
+            [11.5841, 48.1389],
+            [11.5848, 48.1392],
+            [11.5855, 48.1396]
+          ]
+        },
+        "properties": {
+          "fid": 4,
+          "name": "Residenzstrasse",
+          "eemi_grade": {
+            "gw": 4,
+            "twgeb": 3.9,
+            "twofs": 4.1,
+            "twrio": 3.8,
+            "twsub": 4.2,
+            "tweben": 4,
+            "sub_type_grades": {
+              "ABP": 3.9,
+              "ONA": 4.1
+            }
+          }
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [11.581, 48.1357],
+            [11.5817, 48.136],
+            [11.5823, 48.1363],
+            [11.5829, 48.1366],
+            [11.5835, 48.1369]
+          ]
+        },
+        "properties": {
+          "fid": 5,
+          "name": "Sendlinger Strasse",
+          "eemi_grade": {
+            "gw": 1.6,
+            "twgeb": 1.5,
+            "twofs": 1.7,
+            "twrio": 1.4,
+            "twsub": 1.8,
+            "tweben": 1.6,
+            "sub_type_grades": {
+              "ABP": 1.5,
+              "ONA": 1.7
+            }
+          }
+        }
+      }
+    ]
+  },
+  "todos": [
+    {
+      "id": 1,
+      "title": "Oberflächenprüfung Neuhauser Strasse",
+      "description": "Überprüfung des Straßenbelags auf Unebenheiten und Risse",
+      "status": "Ausstehend",
+      "author": "Max Mustermann",
+      "road_fid": 1
+    },
+    {
+      "id": 2,
+      "title": "Beleuchtung erneuern Kaufingerstrasse",
+      "description": "Defekte Straßenlampen ersetzen",
+      "status": "In Planung",
+      "author": "Anna Schmidt",
+      "road_fid": 2
+    },
+    {
+      "id": 3,
+      "title": "Markierungen auffrischen",
+      "description": "Fahrbahnmarkierungen am Marienplatz erneuern",
+      "status": "Abgeschlossen",
+      "author": "Peter Weber",
+      "road_fid": 3
+    },
+    {
+      "id": 4,
+      "title": "Kopfsteinpflaster sanieren",
+      "description": "Teile der Residenzstrasse sanieren",
+      "status": "Ausstehend",
+      "author": "Lisa Müller",
+      "road_fid": 4
+    },
+    {
+      "id": 5,
+      "title": "Asphaltkontrolle",
+      "description": "Zustand der Sendlinger Strasse prüfen",
+      "status": "In Planung",
+      "author": "Thomas Klein",
+      "road_fid": 5
+    },
+    {
+      "title": "Somthing to do",
+      "description": "",
+      "status": "Ausstehend",
+      "author": "saidev",
+      "road_fid": 1,
+      "id": 6
+    }
+  ]
+}

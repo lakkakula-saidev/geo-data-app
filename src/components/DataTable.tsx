@@ -25,9 +25,11 @@ export const DataTable = <T,>({ title, data, columns }: DataTableProps<T>) => {
       )}
       <Table striped>
         <TableHead>
-          {columns.map((col) => (
-            <TableHeadCell key={col.key as string}>{col.label}</TableHeadCell>
-          ))}
+          <TableRow>
+            {columns.map((col) => (
+              <TableHeadCell key={col.key as string}>{col.label}</TableHeadCell>
+            ))}
+          </TableRow>
         </TableHead>
         <TableBody className="divide-y">
           {data.map((row, rowIndex) => (

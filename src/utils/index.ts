@@ -2,11 +2,11 @@ import { Feature } from "geojson";
 import { RoadFeature } from "../types/common";
 
 const tailwindColors: Record<string, string> = {
-  blue: "rgb(59, 130, 246)",
-  lightGreen: "rgb(134, 239, 172)",
-  darkGreen: "rgb(22, 101, 52)",
-  yellow: "rgb(253, 224, 71)",
-  red: "rgb(239, 68, 68)"
+  blue: "#3b82f6", // blue-500
+  lightGreen: "#86efac", // green-300
+  darkGreen: "#166534", // green-800
+  yellow: "#fde047", // yellow-300
+  red: "#ef4444" // red-500
 };
 
 export const getColor = (grade: number): string => {
@@ -18,13 +18,24 @@ export const getColor = (grade: number): string => {
 };
 
 export const geoJSONStyle = (feature?: RoadFeature) => {
-  if (!feature || !feature.properties?.eemi_grade) return {};
+  // Always return a visible style, even if no grade data
+  const defaultStyle = {
+    color: "#000000", // Black for features without grade
+    opacity: 0.8,
+    weight: 5,
+    fillOpacity: 0
+  };
+
+  if (!feature || !feature.properties?.eemi_grade) {
+    return defaultStyle;
+  }
 
   const grade = feature.properties.eemi_grade.gw;
   return {
     color: getColor(grade),
     opacity: 0.8,
-    weight: 5
+    weight: 5,
+    fillOpacity: 0
   };
 };
 
