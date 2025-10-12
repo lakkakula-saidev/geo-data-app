@@ -19,8 +19,12 @@ interface DbSnapshot {
  * db.json must reside in /public (Vite serves it from /db.json).
  */
 const loadDb = async (): Promise<DbSnapshot> => {
-  const res = await fetch("/db.json", { cache: "no-store" });
-  if (!res.ok) throw new Error("Failed to load db.json");
+  // Use Vite's BASE_URL so GitHub Pages sub-path (e.g. /geo-data-app/) is respected.
+  // import.meta.env.BASE_URL is typed by Vite; ensure single trailing slash.
+  const base = (import.meta.env.BASE_URL || "/").replace(/\/+$/, "/");
+  const dbUrl = `${base}db.json`;
+  const res = await fetch(dbUrl, { cache: "no-store" });
+  if (!res.ok) throw new Error(`Failed to load db.json from ${dbUrl}`);
   const json = (await res.json()) as Partial<DbSnapshot>;
   return {
     roads: (json.roads as RoadsCollection) || {

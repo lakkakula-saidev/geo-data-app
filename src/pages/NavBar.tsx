@@ -10,6 +10,7 @@ import {
   ChartBarIcon,
   ClipboardListIcon
 } from "@heroicons/react/outline";
+import logo from "../assets/maps.svg";
 
 export const NavBar: React.FC = () => {
   const location = useLocation();
@@ -22,7 +23,7 @@ export const NavBar: React.FC = () => {
     >
       <NavbarBrand href="/" className="flex items-center">
         <img
-          src="/src/assets/maps-logo.svg"
+          src={logo}
           className="h-8 sm:h-10"
           alt="Maps Logo"
         />
