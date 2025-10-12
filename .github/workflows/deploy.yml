@@ -15,22 +15,29 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Use Node.js 18
+      - name: Use Node.js 20 (align with react-router engine requirement)
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: npm
+
+      - name: Show Node & NPM versions
+        run: |
+          node -v
+          npm -v
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build
+      - name: Build (Vite -> dist)
         run: npm run build
 
-      - name: Prepare publish folder (copy dist to build)
+      - name: Prepare publish folder (copy dist to build as required)
         run: |
           rm -rf build
           cp -R dist build
+          echo "Contents of build:"
+          ls -1 build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -39,4 +46,4 @@ jobs:
           publish_dir: build
           publish_branch: gh-pages
           force_orphan: true
-          commit_message: "Deploy: ${{ github.sha }}"
+          commit_message: "Deploy: ${{ github.sha }} (Node $(node -v))"
